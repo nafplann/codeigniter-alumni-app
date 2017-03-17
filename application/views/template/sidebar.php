@@ -1,5 +1,6 @@
 <aside>
   <ul id="sidenav" class="side-nav fixed">
+    
     <li>
       <div class="userView">
         <div class="background">
@@ -10,11 +11,30 @@
         <a href="#!email"><span class="white-text email">nafplann@gmail.com</span></a>
       </div>
     </li>
+
     <li>
-      <a class="waves-effect"  href="<?php echo base_url('dashboard'); ?>"><i class="material-icons">home</i>Dashboard</a>
+      <a class="waves-effect" href="<?php echo base_url('dashboard'); ?>"><i class="material-icons">home</i>Dashboard</a>
     </li>
+    
+    <li>
+      <div class="divider"></div>
+    </li>
+
+    <li>
+      <a class="subheader">Admin</a>
+    </li>
+    
+    <li>
+      <a class="waves-effect" href="<?php echo base_url('users'); ?>"><i class="material-icons">people</i>Users</a>
+    </li>
+    
+    <li>
+      <div class="divider"></div>
+    </li>
+    
     <li>
       <a class="waves-effect"  href="<?php echo base_url('auth/logout'); ?>"><i class="material-icons">exit_to_app</i>Logout</a>
     </li>
+    
   </ul>
 </aside>
