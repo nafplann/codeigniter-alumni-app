@@ -20,17 +20,19 @@
       <div class="divider"></div>
     </li>
 
-    <li>
-      <a class="subheader">Admin</a>
-    </li>
-    
-    <li>
-      <a class="waves-effect" href="<?php echo base_url('users'); ?>"><i class="material-icons">people</i>Users</a>
-    </li>
-    
-    <li>
-      <div class="divider"></div>
-    </li>
+    <?php if($this->session->userdata('level') === 'administrator'): ?>
+      <li>
+        <a class="subheader">Admin</a>
+      </li>
+      
+      <li>
+        <a class="waves-effect" href="<?php echo base_url('users'); ?>"><i class="material-icons">people</i>Users</a>
+      </li>
+      
+      <li>
+        <div class="divider"></div>
+      </li>
+    <?php endif; ?>
     
     <li>
       <a class="waves-effect"  href="<?php echo base_url('auth/logout'); ?>"><i class="material-icons">exit_to_app</i>Logout</a>

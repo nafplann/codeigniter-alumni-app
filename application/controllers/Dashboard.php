@@ -5,6 +5,8 @@ class Dashboard extends MY_Controller
   public function __construct()
   {
     parent::__construct();
+
+    // Cek apakah user sudah login
     $this->cekLogin();
   }
 

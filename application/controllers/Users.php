@@ -6,8 +6,12 @@ class Users extends MY_Controller {
   {
     parent::__construct();
     
-    // Check apakah sudah login
+    // Cek apakah user sudah login
     $this->cekLogin();
+
+    // Cek apakah user login 
+    // sebagai administrator
+    $this->isAdmin();
 
     // Load model users
     $this->load->model('model_users');
