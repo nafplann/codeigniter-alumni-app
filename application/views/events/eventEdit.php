@@ -5,7 +5,7 @@
         <span class="card-title"><?php echo $pageTitle; ?></span>
       </div>
       <div class="card-content">
-        <form class="row" id="add-user-form" method="post" action="">
+        <form class="row" id="edit-user-form" method="post" action="">
           <?php if(validation_errors()): ?>
             <div class="col s12">
               <div class="card-panel red">
@@ -21,29 +21,27 @@
             </div>
           <?php endif; ?>
           <div class="input-field col s12 m6">
-              <input id="username" name="username" type="text" value="<?php echo set_value('username'); ?>">
-              <label for="username" class="">Username</label>
+              <input id="nama" name="nama" type="text" value="<?php echo $event->nama; ?>">
+              <label for="nama" class="">Nama Event</label>
           </div>
           <div class="input-field col s12 m6">
-              <input id="password" name="password" type="password" value="<?php echo set_value('password'); ?>">
-              <label for="password" class="">Password</label>
+              <input id="contact" name="contact" type="text" value="<?php echo $event->contact; ?>">
+              <label for="contact" class="">Contact Person</label>
           </div>
           <div class="input-field col s12 m6">
-              <select id="level" name="level">
-                  <option value="administrator">Administrator</option>
-                  <option value="alumni">Alumni</option>
-              </select>
-              <label>Pilih Level</label>
+              <input id="tanggal_mulai" class="datepicker" name="tanggal_mulai" type="text" value="<?php echo $event->tanggal_mulai; ?>">
+              <label for="tanggal_mulai" class="">Tanggal Mulai</label>
           </div>
           <div class="input-field col s12 m6">
-              <select id="active" name="active">
-                  <option value="0">Tidak</option>
-                  <option value="1">Ya</option>
-              </select>
-              <label>Active</label>
+              <input id="tanggal_berakhir" class="datepicker" name="tanggal_berakhir" type="text" value="<?php echo $event->tanggal_berakhir; ?>">
+              <label for="tanggal_berakhir" class="">Tanggal Berakhir</label>
+          </div>
+          <div class="input-field col s12 m12">
+              <input id="keterangan" name="keterangan" type="text" value="<?php echo $event->keterangan; ?>">
+              <label for="keterangan" class="">Keterangan</label>
           </div>
           <div class="input-field col s12 right-align">
-              <button type="submit" name="submit" value="add_user" class="btn amber waves-effect waves-green">Simpan</button>
+              <button type="submit" name="submit" value="<?php echo $event->id; ?>" class="btn amber waves-effect waves-green">Simpan</button>
           </div>
         </form>
       </div>
