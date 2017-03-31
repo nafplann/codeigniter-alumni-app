@@ -25,6 +25,7 @@
                   </tr>
               </thead>
               <tbody>
+                <?php if($users): ?>
                   <?php $no = 0; foreach($users as $row): ?>
                     <tr>
                       <td><?php echo ++$no; ?></td>
@@ -38,6 +39,11 @@
                       </td>
                     </tr>
                   <?php endforeach; ?>
+                <?php else: ?>
+                  <tr>
+                    <td class="center-align" colspan="6">Belum ada data user</td>
+                  </tr>
+                <?php endif; ?>
               </tbody>
           </table>
         </div>
