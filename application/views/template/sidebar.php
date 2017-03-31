@@ -15,6 +15,10 @@
     <li>
       <a class="waves-effect" href="<?php echo base_url('dashboard'); ?>"><i class="material-icons">home</i>Dashboard</a>
     </li>
+
+    <li>
+      <a class="waves-effect" href="<?php echo base_url('events'); ?>"><i class="material-icons">event</i>Events</a>
+    </li>
     
     <li>
       <div class="divider"></div>
