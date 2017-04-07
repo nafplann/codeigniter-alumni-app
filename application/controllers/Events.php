@@ -6,7 +6,7 @@ class Events extends MY_Controller {
   {
     parent::__construct();
     
-    // Cek apakah user sudah login
+    // Cek apakah event sudah login
     $this->cekLogin();
 
     // Load model events
@@ -15,9 +15,39 @@ class Events extends MY_Controller {
 
   public function index()
   {
+    // Load library pagination
+    $this->load->library('pagination');
+
+    // Pengaturan pagination
+    $config['base_url'] = base_url('events/index/');
+    $config['total_rows'] = $this->model_events->get()->num_rows();
+    $config['per_page'] = 5;
+    $config['offset'] = $this->uri->segment(3);
+
+    // Styling pagination
+    $config['first_link'] = false;
+    $config['last_link'] = false;
+
+    $config['full_tag_open'] = '<ul class="pagination">';
+    $config['full_tag_close'] = '</ul>';
+
+    $config['num_tag_open'] = '<li class="waves-effect">';
+    $config['num_tag_close'] = '</li>';
+
+    $config['prev_tag_open'] = '<li class="waves-effect">';
+    $config['prev_tag_close'] = '</li>';
+
+    $config['next_tag_open'] = '<li class="waves-effect">';
+    $config['next_tag_close'] = '</li>';
+
+    $config['cur_tag_open'] = '<li class="active"><a href="#">';
+    $config['cur_tag_close'] = '</a></li>';
+
+    $this->pagination->initialize($config);
+
     // Data untuk page index
     $data['pageTitle'] = 'Events';
-    $data['events'] = $this->model_events->get()->result();
+    $data['events'] = $this->model_events->get_offset($config['per_page'], $config['offset'])->result();
     $data['pageContent'] = $this->load->view('events/eventList', $data, TRUE);
 
     // Jalankan view template/layout
@@ -78,7 +108,7 @@ class Events extends MY_Controller {
 			} 
     }
     
-    // Data untuk page users/add
+    // Data untuk page events/add
     $data['pageTitle'] = 'Tambah Data Event';
     $data['pageContent'] = $this->load->view('events/eventAdd', $data, TRUE);
 
@@ -140,17 +170,17 @@ class Events extends MY_Controller {
 			} 
     }
     
-    // Ambil data user dari database
+    // Ambil data event dari database
     $event = $this->model_events->get_where(array('id' => $id))->row();
     
     // Mengubah format tanggal dari database
     $event->tanggal_mulai = date_format(date_create($event->tanggal_mulai), 'd-m-Y');
     $event->tanggal_berakhir = date_format(date_create($event->tanggal_berakhir), 'd-m-Y');
 
-    // Jika data user tidak ada maka show 404
+    // Jika data event tidak ada maka show 404
     if (!$event) show_404();
 
-    // Data untuk page users/add
+    // Data untuk page events/add
     $data['pageTitle'] = 'Edit Data Event';
     $data['event'] = $event;
     $data['pageContent'] = $this->load->view('events/eventEdit', $data, TRUE);
@@ -161,11 +191,11 @@ class Events extends MY_Controller {
 
   public function delete($id)
   {
-    // Ambil data user dari database
-    $user = $this->model_events->get_where(array('id' => $id))->row();
+    // Ambil data event dari database
+    $event = $this->model_events->get_where(array('id' => $id))->row();
 
-    // Jika data user tidak ada maka show 404
-    if (!$user) show_404();
+    // Jika data event tidak ada maka show 404
+    if (!$event) show_404();
 
     // Jalankan function delete pada model_events
     $query = $this->model_events->delete($id);
