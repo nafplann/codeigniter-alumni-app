@@ -18,14 +18,36 @@ class Events extends MY_Controller {
     // Load library pagination
     $this->load->library('pagination');
 
-    // 
-    die(print_r($this->model_events->get()));
-    $config['url'] = base_url('events/index/');
-    $config['total_rows'] = 
+    // Pengaturan pagination
+    $config['base_url'] = base_url('events/index/');
+    $config['total_rows'] = $this->model_events->get()->num_rows();
+    $config['per_page'] = 5;
+    $config['offset'] = $this->uri->segment(3);
+
+    // Styling pagination
+    $config['first_link'] = false;
+    $config['last_link'] = false;
+
+    $config['full_tag_open'] = '<ul class="pagination">';
+    $config['full_tag_close'] = '</ul>';
+
+    $config['num_tag_open'] = '<li class="waves-effect">';
+    $config['num_tag_close'] = '</li>';
+
+    $config['prev_tag_open'] = '<li class="waves-effect">';
+    $config['prev_tag_close'] = '</li>';
+
+    $config['next_tag_open'] = '<li class="waves-effect">';
+    $config['next_tag_close'] = '</li>';
+
+    $config['cur_tag_open'] = '<li class="active"><a href="#">';
+    $config['cur_tag_close'] = '</a></li>';
+
+    $this->pagination->initialize($config);
 
     // Data untuk page index
     $data['pageTitle'] = 'Events';
-    $data['events'] = $this->model_events->get()->result();
+    $data['events'] = $this->model_events->get_offset($config['per_page'], $config['offset'])->result();
     $data['pageContent'] = $this->load->view('events/eventList', $data, TRUE);
 
     // Jalankan view template/layout

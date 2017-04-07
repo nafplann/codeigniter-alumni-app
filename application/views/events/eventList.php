@@ -27,7 +27,7 @@
               </thead>
               <tbody>
                 <?php if($events): ?>
-                  <?php $no = 0; foreach($events as $row): ?>
+                  <?php $no = $this->uri->segment(3); foreach($events as $row): ?>
                     <tr>
                       <td><?php echo ++$no; ?></td>
                       <td><?php echo $row->nama; ?></td>
@@ -48,6 +48,9 @@
                 <?php endif; ?>
               </tbody>
           </table>
+          <div class="center-align">
+            <?php echo $this->pagination->create_links(); ?>
+          </div>
         </div>
       </div>
     </div>

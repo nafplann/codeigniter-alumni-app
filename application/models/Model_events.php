@@ -12,6 +12,17 @@
       return $query;
     }
 
+    public function get_offset($limit, $offset)
+    {
+      // Jalankan query
+      $query = $this->db
+        ->limit($limit, $offset)
+        ->get($this->table);
+
+      // Return hasil query
+      return $query;
+    }
+
     public function get_where($where)
     {
       // Jalankan query
