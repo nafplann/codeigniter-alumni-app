@@ -6,7 +6,7 @@ class Events extends MY_Controller {
   {
     parent::__construct();
     
-    // Cek apakah user sudah login
+    // Cek apakah event sudah login
     $this->cekLogin();
 
     // Load model events
@@ -15,6 +15,14 @@ class Events extends MY_Controller {
 
   public function index()
   {
+    // Load library pagination
+    $this->load->library('pagination');
+
+    // 
+    die(print_r($this->model_events->get()));
+    $config['url'] = base_url('events/index/');
+    $config['total_rows'] = 
+
     // Data untuk page index
     $data['pageTitle'] = 'Events';
     $data['events'] = $this->model_events->get()->result();
@@ -78,7 +86,7 @@ class Events extends MY_Controller {
 			} 
     }
     
-    // Data untuk page users/add
+    // Data untuk page events/add
     $data['pageTitle'] = 'Tambah Data Event';
     $data['pageContent'] = $this->load->view('events/eventAdd', $data, TRUE);
 
@@ -140,17 +148,17 @@ class Events extends MY_Controller {
 			} 
     }
     
-    // Ambil data user dari database
+    // Ambil data event dari database
     $event = $this->model_events->get_where(array('id' => $id))->row();
     
     // Mengubah format tanggal dari database
     $event->tanggal_mulai = date_format(date_create($event->tanggal_mulai), 'd-m-Y');
     $event->tanggal_berakhir = date_format(date_create($event->tanggal_berakhir), 'd-m-Y');
 
-    // Jika data user tidak ada maka show 404
+    // Jika data event tidak ada maka show 404
     if (!$event) show_404();
 
-    // Data untuk page users/add
+    // Data untuk page events/add
     $data['pageTitle'] = 'Edit Data Event';
     $data['event'] = $event;
     $data['pageContent'] = $this->load->view('events/eventEdit', $data, TRUE);
@@ -161,11 +169,11 @@ class Events extends MY_Controller {
 
   public function delete($id)
   {
-    // Ambil data user dari database
-    $user = $this->model_events->get_where(array('id' => $id))->row();
+    // Ambil data event dari database
+    $event = $this->model_events->get_where(array('id' => $id))->row();
 
-    // Jika data user tidak ada maka show 404
-    if (!$user) show_404();
+    // Jika data event tidak ada maka show 404
+    if (!$event) show_404();
 
     // Jalankan function delete pada model_events
     $query = $this->model_events->delete($id);
