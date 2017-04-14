@@ -19,6 +19,10 @@
     <li>
       <a class="waves-effect" href="<?php echo base_url('events'); ?>"><i class="material-icons">event</i>Events</a>
     </li>
+
+    <li>
+      <a class="waves-effect" href="<?php echo base_url('loker'); ?>"><i class="material-icons">work</i>Lowongan Kerja</a>
+    </li>
     
     <li>
       <div class="divider"></div>
