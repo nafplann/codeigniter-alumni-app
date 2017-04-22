@@ -99,7 +99,7 @@ class Loker extends MY_Controller {
 
         // cek jika query berhasil
         if ($query) $message = array('status' => true, 'message' => 'Berhasil menambahkan lowongan kerja');
-        else $message = array('status' => true, 'message' => 'Gagal menambahkan lowongan kerja');
+        else $message = array('status' => false, 'message' => 'Gagal menambahkan lowongan kerja');
 
         // simpan message sebagai session
         $this->session->set_flashdata('message', $message);
