@@ -19,16 +19,21 @@ class Auth extends CI_Controller
       
       // Mengatur pesan error validasi data
       $this->form_validation->set_message('cekAkun', 'Username atau password yang Anda masukkan salah!');
-      return FALSE;
+      return false;
     
     // Jika berhasil maka set user session dan return true
     } else {
 
       // data user dalam bentuk array
       $userData = array(
+        'id' => $query->id,
         'username' => $query->username,
         'level' => $query->level,
-        'logged_in' => TRUE
+        'avatar' => $query->avatar,
+        'nama' => $query->nama,
+        'alamat' => $query->alamat,
+        'telp' => $query->telp,
+        'logged_in' => true
       );
 			
       // set session untuk user
