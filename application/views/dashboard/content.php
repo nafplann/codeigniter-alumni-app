@@ -21,7 +21,7 @@
     </div>
     <div class="col s12 m6">
         <div class="card red darken-1">
-            <div class="card-content white-text x">
+            <div class="card-content white-text xx">
                 <p class="card-title">Lowongan Kerja Terbaru</p>
                 <div class="row dashboard-row">
                     <div class="col s2">
