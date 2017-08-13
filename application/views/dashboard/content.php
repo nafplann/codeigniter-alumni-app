@@ -8,8 +8,12 @@
                         <i class="large material-icons">event</i>
                     </div>
                     <div class="col s10">
-                        <h4 class="dashboard-title">Bazar Bizir</h4>
-                        <h6 class="dashboard-title">31 Januari 2017</h6>
+                        <h4 class="dashboard-title">
+                            <?php echo ($event) ? $event->nama : '-'; ?>
+                        </h4>
+                        <h6 class="dashboard-title">
+                            <?php echo ($event) ? date_format(date_create($event->tanggal_berakhir), 'd F Y') : '-'; ?>
+                        </h6>
                     </div>
                 </div>
             </div>
@@ -24,8 +28,12 @@
                         <i class="large material-icons">work</i>
                     </div>
                     <div class="col s10">
-                        <h4 class="dashboard-title">Dirut Pertanyimak</h4>
-                        <h6 class="dashboard-title">20 Januari 2017</h6>
+                        <h4 class="dashboard-title">
+                            <?php echo ($loker) ? $loker->nama_perusahaan : '-'; ?>
+                        </h4>
+                        <h6 class="dashboard-title">
+                            <?php echo ($loker) ? date_format(date_create($loker->tanggal_berakhir), 'd F Y') : '-'; ?>
+                        </h6>
                     </div>
                 </div>
             </div>
