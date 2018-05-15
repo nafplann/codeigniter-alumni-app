@@ -3,3 +3,6 @@ Aplikasi alumni menggunakan codeigniter dan materialize css framework. Untuk mel
 
 Jika dirasa bermanfaat, silahkan bagikan dan jangan lupa kasih stars yaa. Bisa juga mengunjungi linkedin saya dan memberikan rekomendasi keahlian. Terima Kasih :)
 https://www.linkedin.com/in/nafplann
+
+## License
+Released under the terms of the MIT license.
